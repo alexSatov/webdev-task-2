@@ -18,7 +18,4 @@ app.use('/places', placesRoute);
 app.all('*', error404);
 app.use(serverError);
 
-app.listen(port);
-
-/* eslint no-console: 0 */
-console.log(`listen on ${port}`);
+app.listen(port, () => console.info(`listen on ${port}`));

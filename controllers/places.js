@@ -2,6 +2,19 @@
 
 const Place = require('../models/place');
 
+const visit = (req, res, visited) => {
+    const id = Number(req.params.id);
+    const place = Place.findById(id);
+
+    if (!place) {
+        return res.sendStatus(404);
+    }
+
+    place.visited = visited;
+
+    res.sendStatus(200);
+};
+
 module.exports.getAll = (req, res) => {
     const places = Place.getAll(req.query);
 
@@ -44,16 +57,11 @@ module.exports.update = (req, res) => {
 };
 
 module.exports.visit = (req, res) => {
-    const id = Number(req.params.id);
-    const place = Place.findById(id);
+    visit(req, res, true);
+};
 
-    if (!place) {
-        return res.sendStatus(404);
-    }
-
-    place.visited = true;
-
-    res.sendStatus(200);
+module.exports.unvisit = (req, res) => {
+    visit(req, res, false);
 };
 
 module.exports.swap = (req, res) => {

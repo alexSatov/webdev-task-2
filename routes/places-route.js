@@ -13,6 +13,7 @@ router.get('/find', places.find);
 router.patch('/:id([0-9]+)', places.update);
 router.delete('/:id([0-9]+)', places.remove);
 router.put('/:id([0-9]+)/visited', places.visit);
+router.put('/:id([0-9]+)/unvisited', places.unvisit);
 router.put('/:id1([0-9]+)/swap/:id2([0-9]+)', places.swap);
 
 module.exports = router;
