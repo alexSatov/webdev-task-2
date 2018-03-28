@@ -6,11 +6,12 @@ const bodyParser = require('body-parser');
 const config = require('./config/default.json');
 const placesRoute = require('./routes/places-route');
 const { error404 } = require('./controllers/errors');
-const { serverError, bodyParseError } = require('./middlewares');
+const { serverError, bodyParseError, accessControlAllowOrigin } = require('./middlewares');
 
 const port = process.env.PORT || config.port;
 const app = express();
 
+app.use(accessControlAllowOrigin);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParseError);
