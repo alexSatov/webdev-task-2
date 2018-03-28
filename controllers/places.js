@@ -36,8 +36,10 @@ module.exports.create = (req, res) => {
         return res.sendStatus(400);
     }
 
-    Place.create(req.body.description).save();
-    res.sendStatus(201);
+    const place = Place.create(req.body.description);
+    place.save();
+
+    res.status(201).json(place);
 };
 
 module.exports.update = (req, res) => {
