@@ -43,7 +43,8 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
-    const place = Place.findById(req.params.id);
+    const id = Number(req.params.id);
+    const place = Place.findById(id);
     const description = req.body.description;
 
     if (!place) {
