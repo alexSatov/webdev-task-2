@@ -3,11 +3,6 @@
 const config = require('./config/default.json');
 const { error500 } = require('./controllers/errors');
 
-module.exports.accessControlAllowOrigin = (req, res, next) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    next();
-};
-
 module.exports.bodyParseError = (err, req, res, next) => {
     console.error(err);
     next();
